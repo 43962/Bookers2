@@ -4,10 +4,15 @@
     <tr>
       <th>image</th>
       <th>name</th>
+      <% @users.each do |user| %>
+
+      <p><%= user.name %></p>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <link_to "Show" , user_path[params(:id)] %>
   </tbody>
-  <%= render 'views/newbook', newbook: @book %>
+  <%= render 'userinfo', user: @user %>
+  <%= render 'books/newbook', book: @book %>
 </table>

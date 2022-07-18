@@ -1,0 +1,21 @@
+<h2>User info</h2>
+<% if user.image.attached? %>
+  <%= image_tag current_user.image, size: "200x200" %>
+<% else %>
+  <%= image_tag 'no_image', size: "200x200" %>
+<% end %>
+
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>name</th>
+      <%= user.name %>
+
+    </tr>
+    <tr>
+      <th>introduction</th>
+    </tr>
+  </tbody>
+</table>
+<% end %>
