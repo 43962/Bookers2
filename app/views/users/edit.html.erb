@@ -4,7 +4,9 @@
 </div>
 <div class="form_group">
   <label for="user_image">Image</label>
+  <%= f.file_field :image, accept: "image/*" %>
 </div>
 <div class="form_group">
   <label for="user_introduction">Introduction</label>
 </div>
+<%= link_to "Update User",  user_path %>

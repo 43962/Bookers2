@@ -1,0 +1,17 @@
+<h2>User info</h2>
+<% if user.image.attached? %>
+    <%= image_tag user.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>name</th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+    </tr>
+    <%= link_to "Log in", current_user %>
+  </tbody>
+</table>

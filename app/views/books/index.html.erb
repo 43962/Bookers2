@@ -1,0 +1,11 @@
+<h2>Books</h2>
+<thead>
+    <tr>
+      <th>Title</th>
+      <th>Opinion</th>
+      <!--each doで繰り返し-->
+      <%= @book.each do |book| %>
+      <% end %>
+    </tr>
+</thead>
+<%= render 'views/newbook', newbook: @book %>
