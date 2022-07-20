@@ -1,6 +1,8 @@
 <div class="container px-5 px-sm-0">
  <div class="row">
 
+   <%= flash[:success] %>
+
   <div class="col-md-3">
    <%= render 'users/userinfo', user: @user %>
    <%= render 'newbook', book: @book %>
@@ -12,21 +14,29 @@
     <tbody>
      <tr>
        <td>
-         <!-- image_tag .user  @user.id(100,100) -->
-         <!-- link_to @user.name book_path -->
+         <%= link_to user_path(@user.id) do %>
+         <% if @user.image.attached? %>
+          <%= image_tag @user.image, size: "100x100" %>
+         <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+         <% end %><br>
+         <%= @user.name %>
+         <% end %>
+
        </td>
        <td>
-         <%= link_to @book.id(:title) books_path %>
+         <%= link_to book_path do %>
+         <%= @book.title %>
+         <% end %>
        </td>
        <td>
-         <%= link_to @book.id(:opinion) books_path %>
+         <%= @book.body %>
        </td>
        <td>
-         <%= link_to "edit" edit_path  %>
-       </td>
+         <%= link_to "edit", edit_book_path(@book.id), class:"btn btn-sm btn-success edit_book_22189" %>
        <td>
-         <%= link_to "destroy",destroy _path method:delete %>
-         
+         <%= link_to "destroy", book_path(@book.id), method: :delete, class:"btn btn-sm btn-danger destroy_book_22189" %>
+
        </td>
      </tr>
     </tbody>

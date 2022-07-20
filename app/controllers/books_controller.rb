@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    @bookn = Book.new
   end
 
   def index
@@ -19,8 +20,28 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save
     redirect_to book_path(@book.id)
+    flash[:success] = 'You have created book successfully.'
+    else
+      render:index
     end
   end
+
+  def update
+    @book.user_id = current_user.id
+    if @book.save
+    redirect_to user_path(@book.id)
+    flash[:success] = 'You have updated user successfully.'
+    
+    end
+  end
+  
+  def destroy
+    @book.user_id = current_user
+    @post_image.destroy
+    redirect_to book_path
+  end  
+
+
 
   private
   # ストロングパラメータ
