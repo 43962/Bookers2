@@ -21,13 +21,12 @@
       <% @users.each do |user| %>
        <tr>
          <td>
-          <%= image_tag users_path(user.id) do %>
-           <% if users.image.attached? %>
-            <%= image_tag users.image, size: "100x100" %>
+           <% if user.image.attached? %>
+            <%= image_tag user.image, size: "100x100" %>
            <% else %>
             <%= image_tag 'no_image', size: "100x100" %>
            <% end %>
-          <% end %>
+
          </td>
          <td>
          <%= user.name %>

@@ -1,21 +1,21 @@
-<% if @user.errors.any? %>
-  <%= @user.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
     <h2>User info</h2>
+    <% if @user.errors.any? %>
+  <h2><%= @user.errors.count %>errors prohibited this obj from being saved:</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+    
+     <%= form_with model: @user do |f| %>
    <div class="form_group">
-    <label for="user_name">Name</label>
-     <%= form_with model: current_user do |f| %>
+    <label for="user_name">Name</label><br>
      <%= f.text_field :name %>
    </div>
 
@@ -28,10 +28,9 @@
     <label for="user_introduction">Introduction</label>
      <p><%= f.text_area :introduction %></p>
    </div>
+
+     <%= f.submit "Update User", class: "btn btn-secondary" %>
      <% end %>
-
-     <%= link_to "Update User",  user_path, class: "btn btn-secondary" %>
-
    </div>
   </div>
 </div>

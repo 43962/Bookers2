@@ -1,5 +1,15 @@
 <p id="notice"></p>
 <div class="container px-5 px-sm-0">
+
+  <% if @book.errors.any? %>
+  <h2><%= @book.errors.count %>errors prohibited this obj from being saved:</h2>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
  <div class="row">
    <div class="col-md-3">
     <%= render 'users/userinfo', user: @user %>
@@ -21,9 +31,9 @@
         <% @books.each do |book| %>
            <tr>
              <td>
-               <%= link_to user_path(@user.id) do %>
-                 <% if @user.image.attached? %>
-                   <%= image_tag @user.image, size: "100x100" %>
+               <%= link_to user_path(book.user.id) do %>
+                 <% if book.user.image.attached? %>
+                   <%= image_tag book.user.image, size: "100x100" %>
                  <% else %>
                    <%= image_tag 'no_image', size: "100x100" %>
                  <% end %>
